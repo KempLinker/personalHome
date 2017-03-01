@@ -1,0 +1,547 @@
+
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+    <meta http-equiv="Content-Language" content="en">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="reset.css" />
+    <style type="text/css">
+        html,body{
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            min-width: 960px;
+            font-size: 10px;
+        }
+
+        .home-container{
+            width: 100%;
+            height: 100%;
+            min-width: 1000px;
+            overflow: hidden;
+            background-color: #6d6f71;
+        }
+        .flex-container.home-container{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .center-container{
+            position: relative;
+            width: 800px;
+            height: 500px;
+            font-family: "Avant Garde",Avantgarde,"Century Gothic",CenturyGothic,"AppleGothic",Helvetica,sans-serif,"Microsoft YaHei";
+        }
+        .center-container .float-left-bottom-block{
+            position: absolute;
+            top: 120px;
+            left: -100px;
+            width: 150px;
+            height: 210px;
+            background-color: #e9db39;
+            box-shadow: 0 6px 24px 0 rgba(0,0,0, .4);
+            overflow: hidden;
+            z-index: 0;
+        }
+        .float-left-bottom-block .text{
+            position: absolute;
+            left: -38px;
+            color: #f1f1f1;
+            transform: rotate(90deg);
+            bottom: 50px;
+            color: #87898b;
+            font-size: 54px;
+        
+        }
+        .center-container .float-left-top-block{
+            position: absolute;
+            top: 80px;
+            left: -60px;
+            width: 140px;
+            height: 80px;
+            background-color: #3e3c3d;
+            box-shadow: 0 6px 24px 0 rgba(0,0,0, .4);
+            z-index: 20;
+        }
+        .float-left-top-block .text{
+            position: absolute;
+            top: 20px;
+            left: 24px;
+            font-size: 28px;
+            color: #f1f1f1;
+             transition: .5s all 0s ease-in-out;
+        }
+        .float-left-top-block .yellow{
+             color: #e9db39;
+            transition: .5s all 0s ease-in-out;
+        }
+        .center-container .float-right-top-block{
+            position: absolute;
+            top: 50px;
+            right: -130px;
+            width: 340px;
+            height: 120px;
+            background-color: #3e3c3d;
+            box-shadow: 0 6px 24px 0 rgba(0,0,0, .4);
+            z-index: 20;
+        }
+        .center-container .float-right-top-block p{
+            margin: 24px 0 0 32px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+        }
+        .center-container .float-right-bottom-block{
+            position: absolute;
+            top: 100px;
+            right: -90px;
+            width: 100px;
+            height: 280px;
+            background-color: #e9db39;
+            box-shadow: 0 6px 24px 0 rgba(0,0,0, .4);
+            z-index: 10;
+        }
+        .float-right-bottom-block img{
+            position: absolute;
+            bottom: 61px;
+            right: 56px;
+            transition: .5s all 0s ease-in-out;
+        }
+        .float-right-bottom-block img.move{
+            right: 16px;
+            transition: .5s all 0s ease-in-out;
+        }
+        .center-container .float-right-bottom-block-go{
+            position: absolute;
+            top: 280px;
+            right: -50px;
+            width: 120px;
+            height: 60px;
+            background-color: #3e3c3d;
+            box-shadow: 0 6px 24px 0 rgba(0,0,0, .4);
+            cursor: pointer;
+            overflow: hidden;
+            z-index: 15;
+        }
+        .float-right-bottom-block-go .go{
+            position: absolute;
+            top: 16px;
+            left: 24px;
+            font-size: 24px;
+            color: #f1f1f1;
+            transition: .5s all 0s ease-in-out;
+        }
+        .float-right-bottom-block-go img{
+            position: absolute;
+            top: 23px;
+            right: 16px;
+            transition: .5s all 0s ease-in-out;
+        }
+        .float-right-bottom-block-go:hover .go{
+            left: 60px;
+            color: #e9db39;
+            transition: .5s all 0s ease-in-out;
+        }
+        .float-right-bottom-block-go:hover img{
+            right: -24px;
+            transition: .5s all 0s ease-in-out;
+        }
+        .center-container .center-block{
+            position: relative;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background: #f1f1f1;
+            z-index: 10;
+            border-radius: 2px;
+            box-shadow: 0 10px 40px 10px rgba(0,0,0,.3);
+        }
+        .center-container .content-block{
+            position: absolute;
+            top: 68px;
+            left: 160px;
+            width: 400px;
+            color: #87898b;
+            font-weight: bold;
+            font-size: 42px;
+        }
+        .content-block .content-item{
+            position: absolute;
+            top: 0;
+            display: none;
+        }
+        .center-container .category-block{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 90%;
+            height: 200px;
+            margin-top: 270px;
+        }
+        .category-block .category-item{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-grow: 1;
+            height: 100%;
+        }
+        .category-item .text-box{
+            position: relative;
+            width: 180px;
+            height: 120px;
+            border: none;
+            text-align: center;
+            overflow-x: hidden;
+            cursor: pointer;
+        }
+        .text-box .text-tile{
+            display: inline-block;
+            line-height: 120px;
+            font-size: 32px;
+            color: #87898b;
+            font-family: "Avant Garde",Avantgarde,"Century Gothic",CenturyGothic,"AppleGothic",Helvetica,sans-serif,"Microsoft YaHei";
+            transition: .2s all 0s ease-in-out;
+        }
+        .text-box .ani-line{
+            position: absolute;
+            display: inline-block;
+            background: #a1a3a4;
+            transition: .2s all 0s ease-in-out;
+        }
+        .text-box.disabled .text-tile{
+            color: #d6d7d7;
+            transition: .2s all 0s ease-in-out;
+        }
+        .text-box.disabled .ani-line{
+            background: #d6d7d7;
+            transition: .2s all 0s ease-in-out;
+        }
+        .text-box.active .text-tile{
+            color: #3e3c3d;
+            transition: .2s all 0s ease-in-out;
+        }
+        .text-box.active .ani-line{
+            background: #6d6f71;
+            transition: .5s all 0s ease-in-out;
+        }
+        .text-box.active .ani-line.top-hor{
+            -webkit-animation: aniLineTopHor .5s ease-in-out 0s 1 normal;
+            -webkit-animation-fill-mode: forwards;
+        }
+        .text-box.out-active .ani-line.top-hor{
+            -webkit-animation: aniLineTopHor2 .5s ease-in-out 0s 1 normal;
+            -webkit-animation-fill-mode: forwards;
+        }
+        .text-box.active .ani-line.top-ver{
+            -webkit-animation: aniLineTopVer .5s ease-in-out 0s 1 normal;
+            -webkit-animation-fill-mode: forwards;
+        }
+        .text-box.out-active .ani-line.top-ver{
+            -webkit-animation: aniLineTopVer2 .5s ease-in-out 0s 1 normal;
+            -webkit-animation-fill-mode: forwards;
+        }
+        .text-box.active .ani-line.bottom-hor{
+            -webkit-animation: aniLineBottomHor .5s ease-in-out 0s 1 normal;
+            -webkit-animation-fill-mode: forwards;
+        }
+        .text-box.out-active .ani-line.bottom-hor{
+            -webkit-animation: aniLineBottomHor2 .5s ease-in-out 0s 1 normal;
+            -webkit-animation-fill-mode: forwards;
+        }
+        .text-box.active .ani-line.bottom-ver{
+            -webkit-animation: aniLineBottomVer .5s ease-in-out 0s 1 normal;
+            -webkit-animation-fill-mode: forwards;
+        }
+        .text-box.out-active .ani-line.bottom-ver{
+            -webkit-animation: aniLineBottomVer2 .5s ease-in-out 0s 1 normal;
+            -webkit-animation-fill-mode: forwards;
+        }
+        @keyframes aniLineTopHor{
+            0%{  left: 0;  width: 50px;  }
+            50%{  width: 100px;  }
+            100%{  width: 50px;  left: 130px;  }
+        }
+        @keyframes aniLineTopHor2{
+            0%{  left: 130px;  width: 50px;  }
+            50%{  width: 100px;  }
+            100%{  width: 50px;  left: 0;  }
+        }
+        @keyframes aniLineTopVer{
+            0%{  top: 0;  height: 20px;  }
+            50%{  height: 40px;  }
+            100%{  height: 20px;  top: 100px;  }
+        }
+        @keyframes aniLineTopVer2{
+            0%{  top: 100px;  height: 20px;  }
+            50%{  height: 40px;  }
+            100%{  height: 20px;  top: 0;  }
+        }
+        @keyframes aniLineBottomHor{
+            0%{  right: 0;  width: 50px;  }
+            50%{  width: 100px;  }
+            100%{  width: 50px;  right: 130px;  }
+        }
+        @keyframes aniLineBottomHor2{
+            0%{  right: 130px;  width: 50px;  }
+            50%{  width: 100px;  }
+            100%{  width: 50px;  right: 0;  }
+        }
+        @keyframes aniLineBottomVer{
+            0%{  bottom: 0;  height: 20px;  }
+            50%{  height: 40px;  }
+            100%{  height: 20px;  bottom: 100px;  }
+        }
+        @keyframes aniLineBottomVer2{
+            0%{  bottom: 100px;  height: 20px;  }
+            50%{  height: 40px;  }
+            100%{  height: 20px;  bottom: 0;  }
+        }
+
+        .ani-line.top-hor{
+            top: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+        }
+        .ani-line.top-ver{
+            top: 0;
+            left: 0;
+            height: 20px;
+            width: 2px;
+        }
+        .ani-line.bottom-hor{
+            bottom: 0;
+            right: 0;
+            width: 50px;
+            height: 2px;
+        }
+        .ani-line.bottom-ver{
+            bottom: 0;
+            right: 0;
+            height: 20px;
+            width: 2px;
+        }
+        .version{
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            padding: 10px 20px;
+            font-size: 1.2em;
+            color: rgba(241, 241, 241, 0.4);
+        }
+
+        @media screen and (min-width: 1280px) {
+            .center-container {
+                width: 1000px;
+            }
+        }
+        @media screen and (min-width: 1280px) and (min-height: 700px) {
+            .center-container {
+                height: 600px;
+            }
+            .center-container .category-block{
+                margin-top: 330px;
+            }
+        }
+.list {
+
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-stle: preserve-3d;
+    -ms-transform-style: preserve-3d;
+    -o-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    
+    text-transform: uppercase;
+    position: absolute;
+    margin-left: -140px;
+    top: 20%;
+}
+
+.list a {
+    
+    display: block;
+    color: #fff;
+}
+
+.list a:hover {
+    text-indent: 20px;
+}
+
+.list dt, .list dd {
+
+    text-indent: 10px;
+    line-height: 55px;
+    background: #E0FBAC;
+    margin: 0;
+    height: 55px;
+    width: 270px;
+    color: #fff;
+}
+
+.list dt {
+
+    /* Since we're hiding elements behind here, we need it in 3d */
+    -webkit-transform: translateZ(0.3px);
+    -moz-transform: translateZ(0.3px);
+    -ms-transform: translateZ(0.3px);
+    -o-transform: translateZ(0.3px);
+    transform: translateZ(0.3px);
+
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    font-size: 15px;
+}
+
+.list dd {
+
+    border-top: 1px dashed rgba(255,255,255,0.3);
+    line-height: 35px;
+    font-size: 11px;
+    height: 35px;
+    margin: 0;
+}
+
+    </style>
+    <!--<script type="text/javascript" src="http://cdn.webfont.youziku.com/wwwroot/js/wf/youziku.api.min.js"></script>-->
+
+</head>
+<script type="text/javascript">
+//    $youziku.load(".art-font", "fee1c04ece6a44949d0af0979027ccf4", "hdjxingshu");
+//    $youziku.draw();
+</script>
+<body>
+    <div class="flex-container home-container">
+        <div class="center-container">
+            <dl class="list maki">
+                <dt>Maki</dt>
+                <dd><a href="#">Ana-kyu</a></dd>
+                <dd><a href="#">Chutoro</a></dd>
+                <dd><a href="#">Kaiware</a></dd>
+                <dd><a href="#">Kampyo</a></dd>
+                <dd><a href="#">Kappa</a></dd>
+                <dd><a href="#">Natto</a></dd>
+                <dd><a href="#">Negitoro</a></dd>
+                <dd><a href="#">Oshinko</a></dd>
+                <dd><a href="#">Otoro</a></dd>
+                <dd><a href="#">Tekka</a></dd>
+            </dl>
+            <a href="#" class="toggle">Toggle</a>
+            <div class="float-left-bottom-block">
+                <span class="text">blog</span>
+            </div>
+            <div class="float-left-top-block">
+                <span class="text">LET ' S</span>
+            </div>
+            <div class="float-right-bottom-block">
+                <img src="arrow-right-gray.png" class="J-go-arrow">
+            </div>
+            <div class="float-right-bottom-block-go J-go">
+                <span class="text go">GO</span>
+                <img src="arrow-right-white.png">
+            </div>
+            <div class="float-right-top-block">
+                <p>Kemp Linker</p>
+            </div>
+            <div class="center-block">
+                <div class="content-block">
+                    <div class="content-item J-for-learn" style="display: block">
+                        <p>Born</p>
+                        <p>To be proud</p>
+                    </div>
+                    <div class="content-item J-for-read">
+                        <p>Try</p>
+                        <p>To be persistent</p>
+                    </div>
+                    <div class="content-item J-for-enjoy">
+                        <p>Aim</p>
+                        <p>To be exceptional</p>
+                    </div>
+                </div>
+                <div class="category-block">
+                    <div class="category-item">
+                        <div class="text-box J-ani-text" onclick="toggleContent('learn')">
+                            <span class="ani-line top-ver"></span>
+                            <span class="ani-line top-hor"></span>
+                            <span class="ani-line bottom-ver"></span>
+                            <span class="ani-line bottom-hor"></span>
+                            <span class="text-tile">Learn</span>
+                        </div>
+                    </div>
+                    <div class="category-item">
+                        <div class="text-box J-ani-text" onclick="toggleContent('read')">
+                            <span class="ani-line top-ver"></span>
+                            <span class="ani-line top-hor"></span>
+                            <span class="ani-line bottom-ver"></span>
+                            <span class="ani-line bottom-hor"></span>
+                            <span class="text-tile">Read</span>
+                        </div>
+                    </div>
+                    <div class="category-item">
+                        <div class="text-box J-ani-text" onclick="toggleContent('enjoy')">
+                            <span class="ani-line top-ver"></span>
+                            <span class="ani-line top-hor"></span>
+                            <span class="ani-line bottom-ver"></span>
+                            <span class="ani-line bottom-hor"></span>
+                            <span class="text-tile">Enjoy</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <span class="version">Be Inspired by Demo Version 1</span>
+    </div>
+</body>
+
+<script type="text/javascript" src="jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="ani-menu.js"></script>
+<script type="text/javascript">
+    var $contentItem = $('.content-item');
+    function toggleContent( type ){
+        $contentItem.fadeOut(200);
+        $('.J-for-'+type).delay(200).fadeIn(300);
+    }
+    $(document).ready(function(){
+        var $aniTextBox = $('.J-ani-text');
+        $aniTextBox.on('mouseover', function(){
+            $(this).removeClass('out-active');
+            $(this).addClass('active');
+            $aniTextBox.each(function( index, dom ){
+                if( !$(dom).hasClass('active') ){
+                    $(dom).addClass('disabled');
+                }
+            });
+        });
+
+        function removeOutActive( obj ){
+            obj.removeClass('out-active');
+        }
+        $aniTextBox.on('mouseleave', function( e ){
+            $aniTextBox.removeClass('disabled');
+            $aniTextBox.removeClass('active');
+            var obj = $(this);
+            obj.addClass('out-active');
+            setTimeout(function(){
+                removeOutActive( obj );
+            },500);
+        });
+
+        var $goBlock = $('.J-go');
+        var $leftTopBlock = $('.float-left-top-block .text');
+        $goBlock.on('mouseover', function( e ){
+            $('.J-go-arrow').addClass('move');
+            $leftTopBlock.addClass('yellow');
+        });
+        $goBlock.on('mouseleave', function( e ){
+            $('.J-go-arrow').removeClass('move');
+             $leftTopBlock.removeClass('yellow');
+        });
+    });
+</script>
+</html>

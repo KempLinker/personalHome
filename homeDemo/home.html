@@ -1,0 +1,297 @@
+
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+    <meta http-equiv="Content-Language" content="en">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="reset.css" />
+    <script type="text/javascript">
+
+    </script>
+    <style type="text/css">
+        html,body{
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            min-width: 960px;
+            font-size: 10px;
+        }
+        .home-container{
+            width: 100%;
+            height: 100%;
+            min-width: 960px;
+            overflow: hidden;
+            background-color: #43454a; /*粗晶皂*/
+        }
+        .left-container{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 64%;
+            height: 100%;
+        }
+        .right-container{
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 36%;
+            height: 100%;
+            background: #f1f1f1;
+        }
+        .left-container .center-container{
+            position: relative;
+            height: calc( 100% - 120px );
+            margin: 60px 0 60px 80px;
+            background: #f1f1f1;
+            border-radius: 2px;
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+            box-shadow: 0 2px 16px 0 #43454a;
+        }
+        .left-container .left-inner-block{
+            width: 160px;
+            height: 120px;
+            position: absolute;
+            left: -10px;
+            top: -10px;
+            background: #f1f1f1;
+            box-shadow: inset 0 -2px 16px 0px #43454a;
+        }
+        .right-container .center-container{
+            position: relative;
+            height: calc( 100% - 120px );
+            margin: 60px 80px 60px 0;
+            background: #43454a;
+            border-radius: 2px;
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+        }
+        /*
+        .home-container:before{
+            content: '';
+            background: #f1f1f1;
+            width: calc( 36% + 23px);
+            height: 100%;
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+
+        .center-container{
+            position: relative;
+            height: calc( 100% - 120px );
+            margin: 60px 80px;
+            background: #f1f1f1;
+            border-radius: 2px;
+        }
+
+        .center-container:before{
+            content: '';
+            background: #43454a;
+            width: 36%;
+            height: 100%;
+            position: absolute;
+            right: 0;
+        }
+         */
+        .name{
+            position: absolute;
+            left: -6px;
+            bottom: -29px;
+            font-size: 5em;
+            line-height: 50px;
+            font-weight: normal;
+            color: #43454a;
+            transform: rotate(-90deg);
+            transform-origin: left;
+        }
+        .name:before{
+            position:absolute;
+            top: 0;
+            left: 0;
+            display: block;
+            width: 100%;
+            height: 32px;
+            content: attr(data-content);
+            overflow: hidden;
+            color: #f1f1f1;
+            z-index: 1;
+        }
+        .website{
+            position: absolute;
+            right: -3px;
+            bottom: -10px;
+            display: inline-block;
+            font-size: 3em;
+            font-weight: normal;
+            color: #f1f1f1;
+            letter-spacing: 2px;
+            z-index: 1;
+        }
+        .website .rotate-ani{
+            display: inline-block;
+            height: 28px;
+            line-height: 20px;
+            transform-origin: center;
+            /*
+            -webkit-animation: rotateS 4s cubic-bezier(1, 0.02, 0.61, 0.92) 0s infinite normal;
+            */
+        }
+        @keyframes rotateS{
+            0%{
+                transform: rotate(0deg);
+            }
+            25%{
+                transform: rotate(90deg);
+            }
+            50%{
+                transform: rotate(180deg);
+            }
+            75%{
+                transform: rotate(270deg);
+            }
+            100%{
+                transform: rotate(360deg);
+            }
+        }
+        .main-menu{
+            width: 36%;
+            height: 100%;
+        }
+        .main-menu .menu-list{
+            display: inline-block;
+            margin-top: 80px;
+        }
+        .menu-list .menu-item{
+            position: relative;
+            padding: 10px 20px;
+            margin-top: 8px;
+            cursor: pointer;
+            transition: .2s all 0s ease-in-out;
+        }
+        .menu-item .menu-name{
+            display: inline-block;
+            font-size: 3em;
+            color: #f1f1f1;
+            font-weight: 200;
+            letter-spacing: 2px;
+        }
+        .menu-list:hover .menu-name{
+            color: rgba(241, 241, 241, .5);
+            transition: .2s all 0s ease-in-out;
+        }
+        .menu-list .menu-name:hover{
+            color: #93bbd8;
+            transition: .2s all 0s ease-in-out;
+        }
+        .menu-ani-box{
+            position: relative;
+            width: 0;
+            height: 1px;
+            margin-left: 15px;
+            margin-top: 6px;
+            border-top: 1px solid #93bbd8;
+            transition: .8s all 0s cubic-bezier(0.59, 0.02, 0.63, 0.96);
+
+        }
+        .menu-ani-box .menu-nick-name{
+            position: absolute;
+            top: 0;
+            right: 0;
+            font-size: 2em;
+            color: #93bbd8;
+            transform: rotate(-180deg);
+            transform-origin: right;
+            opacity: 0;
+            transition: .2s all .4s cubic-bezier(0.29, 0.46, 0.52, 0.8);
+        }
+        .menu-list .menu-name:hover + .menu-ani-box{
+            width: 160px;
+            transition: .8s all 0s cubic-bezier(0.59, 0.02, 0.63, 0.96);
+        }
+        .menu-list .menu-name:hover + .menu-ani-box .menu-nick-name{
+            transform: rotate(0deg);
+            opacity: 1;
+            transition: .2s all .4s cubic-bezier(0.29, 0.46, 0.52, 0.8);
+        }
+        .version{
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            padding: 10px 20px;
+            font-size: 1.2em;
+            color: rgba(67, 69, 74, .5);
+        }
+
+
+    </style>
+    <script type="text/javascript" src="http://cdn.webfont.youziku.com/wwwroot/js/wf/youziku.api.min.js"></script>
+</head>
+<script type="text/javascript">
+    $youziku.load(".art-font", "fee1c04ece6a44949d0af0979027ccf4", "hdjxingshu");
+    $youziku.draw();
+</script>
+<body>
+    <div class="home-container">
+        <div class="left-container">
+            <div class="left-inner-block"></div>
+            <div class="center-container">
+                <span class="name" data-content="Kemp Linker">Kemp Linker</span>
+            </div>
+        </div>
+        <div class="right-container">
+            <div class="center-container">
+                <span class="website">website</span>
+                <div class="main-menu">
+
+                    <div class="menu-list">
+                        <div class="menu-item">
+                            <span class="menu-name art-font">学</span>
+                            <div class="menu-ani-box">
+                                <i class="menu-item-icon icon-computer"></i>
+                                <span class="menu-nick-name">Learn</span>
+                            </div>
+                        </div>
+                        <div class="menu-item">
+                            <span class="menu-name art-font">读</span>
+                            <div class="menu-ani-box">
+                                <i class="menu-item-icon icon-computer"></i>
+                                <span class="menu-nick-name">Read</span>
+                            </div></div>
+                        <div class="menu-item">
+                            <span class="menu-name art-font">享</span>
+                            <div class="menu-ani-box">
+                                <i class="menu-item-icon icon-computer"></i>
+                                <span class="menu-nick-name">Enjoy</span>
+                            </div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--
+        <div class="center-container">
+            <span class="name" data-content="Kemp Linker">Kemp Linker</span>
+            <span class="website">website</span>
+            <div class="main-menu">
+
+                <div class="menu-list">
+                    <div class="menu-item art-font"><span>学</span></div>
+                    <div class="menu-item art-font"><span>读</span></div>
+                    <div class="menu-item art-font"><span>见</span></div>
+                </div>
+            </div>
+            <div style="display: none">
+                <p class="menu-item art-font"><span>非学无以致疑，非问无以广识</span></p>
+                <p class="menu-item art-font"><span>枕上诗书闲处好，门前风景雨来佳</span></p>
+                <p class="menu-item art-font"><span>啼莺舞燕，小桥流水飞红</span></p>
+            </div>
+        </div>
+          -->
+        <span class="version">Demo Version 1</span>
+    </div>
+</body>
+
+</html>
