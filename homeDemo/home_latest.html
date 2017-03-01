@@ -73,10 +73,12 @@
             left: 24px;
             font-size: 28px;
             color: #f1f1f1;
-             transition: .5s all 0s ease-in-out;
+            cursor: pointer;
+            transition: .5s all 0s ease-in-out;
         }
+        .float-left-top-block .text:hover,
         .float-left-top-block .yellow{
-             color: #e9db39;
+            color: #e9db39;
             transition: .5s all 0s ease-in-out;
         }
         .center-container .float-right-top-block{
@@ -162,7 +164,7 @@
         }
         .center-container .content-block{
             position: absolute;
-            top: 68px;
+            top: 100px;
             left: 160px;
             width: 400px;
             color: #87898b;
@@ -347,62 +349,47 @@
                 margin-top: 330px;
             }
         }
-.list {
+        .ani-menu {
+            position: absolute;
+            top: 80px;
+            left: 0;
+            width: 140px;
+            font-size: 12px;
+            z-index: -1;
 
-    -webkit-transform-style: preserve-3d;
-    -moz-transform-stle: preserve-3d;
-    -ms-transform-style: preserve-3d;
-    -o-transform-style: preserve-3d;
-    transform-style: preserve-3d;
-    
-    text-transform: uppercase;
-    position: absolute;
-    margin-left: -140px;
-    top: 20%;
-}
+            -webkit-transform-style: preserve-3d;
+            -moz-transform-stle: preserve-3d;
+            -ms-transform-style: preserve-3d;
+            -o-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+            text-transform: uppercase;
 
-.list a {
-    
-    display: block;
-    color: #fff;
-}
+        }
+        .ani-menu a {
+            display: block;
+            color: #fff;
+            background: #3e3c3d;
+        }
+        .ani-menu dt, .ani-menu dd {
+            height: 32px;
+            line-height: 32px;
+            margin: 0;
+            color: #fff;
+            text-indent: 24px;
+            background: #3e3c3d;
+             border-top: 1px dashed rgba(255,255,255,0.3);
+        }
+        
+        .ani-menu dt {
+            height: 0;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
 
-.list a:hover {
-    text-indent: 20px;
-}
-
-.list dt, .list dd {
-
-    text-indent: 10px;
-    line-height: 55px;
-    background: #E0FBAC;
-    margin: 0;
-    height: 55px;
-    width: 270px;
-    color: #fff;
-}
-
-.list dt {
-
-    /* Since we're hiding elements behind here, we need it in 3d */
-    -webkit-transform: translateZ(0.3px);
-    -moz-transform: translateZ(0.3px);
-    -ms-transform: translateZ(0.3px);
-    -o-transform: translateZ(0.3px);
-    transform: translateZ(0.3px);
-
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
-    font-size: 15px;
-}
-
-.list dd {
-
-    border-top: 1px dashed rgba(255,255,255,0.3);
-    line-height: 35px;
-    font-size: 11px;
-    height: 35px;
-    margin: 0;
-}
+             -webkit-transform: translateZ(0.3px);
+            -moz-transform: translateZ(0.3px);
+            -ms-transform: translateZ(0.3px);
+            -o-transform: translateZ(0.3px);
+            transform: translateZ(0.3px);
+        }
 
     </style>
     <!--<script type="text/javascript" src="http://cdn.webfont.youziku.com/wwwroot/js/wf/youziku.api.min.js"></script>-->
@@ -415,25 +402,21 @@
 <body>
     <div class="flex-container home-container">
         <div class="center-container">
-            <dl class="list maki">
-                <dt>Maki</dt>
-                <dd><a href="#">Ana-kyu</a></dd>
-                <dd><a href="#">Chutoro</a></dd>
-                <dd><a href="#">Kaiware</a></dd>
-                <dd><a href="#">Kampyo</a></dd>
-                <dd><a href="#">Kappa</a></dd>
-                <dd><a href="#">Natto</a></dd>
-                <dd><a href="#">Negitoro</a></dd>
-                <dd><a href="#">Oshinko</a></dd>
-                <dd><a href="#">Otoro</a></dd>
-                <dd><a href="#">Tekka</a></dd>
-            </dl>
-            <a href="#" class="toggle">Toggle</a>
+    
             <div class="float-left-bottom-block">
                 <span class="text">blog</span>
             </div>
             <div class="float-left-top-block">
-                <span class="text">LET ' S</span>
+                <span class="text J-open-ani-menu" >LET ' S</span>
+                <dl class="ani-menu J-ani-menu">
+                    <dt></dt>
+                    <dd>Created</dd>
+                    <dd>2017.02.25</dd>
+                    <dd>Updated</dd>
+                    <dd>2017.03.01</dd>
+                    <dd></dd>
+                    <dd>By MaYubo</dd>
+                </dl>
             </div>
             <div class="float-right-bottom-block">
                 <img src="arrow-right-gray.png" class="J-go-arrow">

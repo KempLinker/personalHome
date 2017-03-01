@@ -417,11 +417,11 @@
 
 if ( $.fn.makisu.enabled ) {
 
-    var $maki = $( '.maki' );
+    var $JAaniMenu = $( '.J-ani-menu' );
 
     // Create Makisus
 
-    $maki.makisu({
+    $JAaniMenu.makisu({
         selector: 'dd',
         overlap: 0.6,
         speed: 0.85
@@ -430,19 +430,14 @@ if ( $.fn.makisu.enabled ) {
 
     // Open all
     
-    $( '.list' ).makisu( 'open' );
+    $JAaniMenu.makisu( 'open' );
 
     // Toggle on click
 
-    $( '.toggle' ).on( 'click', function() {
-        $( '.list' ).makisu( 'toggle' );
+    $( '.J-open-ani-menu' ).on( 'click', function() {
+        $JAaniMenu.makisu( 'toggle' );
     });
 
-    // Disable all links
-
-    $( '.demo a' ).click( function( event ) {
-        event.preventDefault();
-    });
 
 } else {
 
