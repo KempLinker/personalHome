@@ -430,7 +430,7 @@ if ( $.fn.makisu.enabled ) {
 
     // Open all
     
-    $JAaniMenu.makisu( 'open' );
+    //$JAaniMenu.makisu( 'open' );
 
     // Toggle on click
 
