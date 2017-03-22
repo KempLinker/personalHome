@@ -1,10 +1,13 @@
 <script>
 
     export default {
-         data () {
+        data () {
             return {
-                datum: 'Router B'
+
             }
+        },
+        created (){
+            this.$store.dispatch('nav/setActiveAsync','enjoyPart')
         }
     }
 </script>

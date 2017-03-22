@@ -35,13 +35,20 @@
                         opacity 0
                         background $bg-col-green
                         transition .2s all 0s ease-in-out
+
                     &:hover
                         color $font-col-white
                         &::before
                             opacity 1
                             top 53px
                             transition .2s all 0s ease-in-out
-
+                    &.active
+                        color $font-col-white
+                    &.active::before
+                        background $bg-col-green
+                        opacity 1
+                        top 53px
+                        transition .2s all 0s ease-in-out
 
 
 
@@ -54,7 +61,7 @@
                 Home
             </div>
             <div class="router-box">
-                <router-link :to="navItem.router" v-for="navItem in headerNav">{{navItem.name}}</router-link>
+                <router-link :to="navItem.router" v-for="navItem in headerNav" v-bind:class="{ active: navItem.name == activeRoute }">{{navItem.title}}</router-link>
             </div>
         </div>
     </div>
@@ -69,26 +76,22 @@
             return {
                 headerNav : [
                     {
-                        router: '/navOne',
-                        name: 'Nav One'
-                    },
-                    {
-                        router: '/navTwo',
-                        name: 'Nav Two'
-                    },
-                    {
-                        router: '/navThree',
-                        name: 'Nav Three'
+                        router: '/learn',
+                        name: 'learnPart',
+                        title: 'Learn'
                     },
                     {
                         router: '/enjoy',
-                        name: 'Enjoy'
+                        name: 'enjoyPart',
+                        title: 'Enjoy'
                     }
                 ]
             }
         },
         computed: {
-
+            'activeRoute': function(){
+                 return this.$store.state.nav.activeRoute
+            }
         },
         methods: {
             goHome: function (event) {

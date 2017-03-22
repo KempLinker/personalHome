@@ -6,7 +6,10 @@
     body
         color $font-col-base
         background-color $bg-col-body
-        background-image url('./img/bg_block.png')
+        background-image url('./static/img/bg_block.png')
+
+    .icon-calendar
+       icon-url('icon-calendar')
 
     .app-container
         width 100%
@@ -32,7 +35,6 @@
         max-width 660px
         padding 8px 16px
         box-sizing border-box
-        border 1px solid #ddd
 
     .right-side-bar
         position absolute

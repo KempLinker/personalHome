@@ -15,10 +15,16 @@
         max-width 660px
         height 160px
         background #fff
-        box-shadow 0 1px 4px rgba(0,0,0,.06)
+        box-shadow 0 2px 4px 0px rgba(0,0,0,.06)
         border 1px solid rgba(0,0,0,.09)
         padding 10px 20px
-        margin-bottom 16px
+        margin-bottom 24px
+        cursor pointer
+        transition .2s box-shadow 0s ease-in-out
+
+        &:hover
+            box-shadow 0 2px 10px 6px rgba(0,0,0,.08)
+            transition .2s box-shadow 0s ease-in-out
 
         .content-tip
             position absolute
@@ -40,10 +46,26 @@
                 border-top 10px solid #484744
 
         .content-caption
+            position relative
             margin-left 32px
             margin-top 8px
             font-size 18px
-
+            &::after
+                content '详情'
+                position absolute
+                top 8px
+                right 0
+                display block
+                color $font-col-green
+                font-size 12px
+                text-decoration underline
+                opacity 0
+                transition .4s all 0s ease-in-out
+        &:hover .content-caption
+            &::after
+                opacity 1
+                top 4px
+                transition .4s all 0s ease-in-out
         .content-sub-info
             position absolute
             left 0
@@ -51,12 +73,41 @@
             width 100%
             height 32px
             border-top 1px solid rgba(0,0,0,.05)
+
+            &::before
+                content ''
+                position absolute
+                top -1px
+                left 0
+                width 0
+                height 1px
+                background $bg-col-green
+
+            ^[0]:hover .content-sub-info::before
+                width 100px
+                -webkit-animation: hoverLineSliceLeft .6s ease-in-out 0s 1 normal;
+                -webkit-animation-fill-mode: forwards;
+
+            &::after
+                content ''
+                position absolute
+                top -1px
+                right 0
+                width 0px
+                height 1px
+                background $bg-col-green
+
+            ^[0]:hover .content-sub-info::after
+                width 100px
+                -webkit-animation: hoverLineSliceRight .6s ease-in-out 0s 1 normal;
+                -webkit-animation-fill-mode: forwards;
             .time
                 display inline-block
                 width 100px
                 line-height 32px
                 margin-left 52px
-                font-size 14px
+                font-size 12px
+                color $font-col-sub
             .feature
                 float right
                 display inline-block
@@ -78,30 +129,47 @@
 
 
         .content-abstract
+            display -webkit-box
+            height 54px
             margin-left 32px
             margin-top 8px
-            font-size 13px
-            height 54px
             overflow hidden
-            color rgba(63,63,60,0.7)
-            display -webkit-box
+            color $font-col-sub
+            font-size 13px
+            font-weight 300
             text-overflow ellipsis
             -webkit-line-clamp 3
             -webkit-box-orient vertical
+
+    @keyframes hoverLineSliceLeft{
+        0%{  left: 0;  width: 0;  }
+        25%{  left: 0;  width: 15%;  }
+        50%{  width: 30%;  }
+        75%{  left: 50%;  width: 5%;  }
+        100%{  left: 50%; width: 0;  }
+    }
+    @keyframes hoverLineSliceRight{
+        0%{  right: 0;  width: 0;  }
+        25%{  right: 0;  width: 15%;  }
+        50%{  width: 30%;  }
+        75%{  right: 50%;  width: 5%;  }
+        100%{ right: 50%;  width: 0;    }
+    }
 
 </style>
 
 <template lang="html">
     <div class="article-container">
         <p class="content-list-title">
-            文章列表 - Javascript
+            列表 - CSS
         </p>
         <div class="content-box" v-for="article in articleList">
             <span class="content-tip">{{article.category}}</span>
-            <div class="content-caption">{{article.name}}</div>
+            <div class="content-caption" v-on:click="goDetail">{{article.name}}</div>
             <div class="content-abstract">{{article.abstract}}</div>
             <div class="content-sub-info">
-                <span class="time">{{article.createTimeFormat}}</span>
+                <span class="time">
+                    <i class="kl-icon-mini icon-calendar mr-8"></i>{{article.createTimeFormat}}</span>
                 <span class="feature">
                     <span class="translated-block">译</span>
                     <span class="reprinted-block">转</span>
@@ -135,7 +203,9 @@
 
         },
         methods: {
-
+            goDetail: function(){
+                this.$router.push({ name: 'articlePart', params: { articleId: 123 }})
+            }
         },
         components: {
 
