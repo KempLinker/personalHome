@@ -54,14 +54,14 @@
                     transition .2s all 0s ease-in-out
 
                 &.ignore
-                    opacity .8
+                    opacity .6
                     transition .2s all 0s ease-in-out
 
                 &.active
                     opacity 1
                     &::before
-                        top 0
-                        height 32px
+                        top 4px
+                        height 24px
                     a
                         color $font-col-green
 
@@ -69,8 +69,8 @@
                 &:hover
                     opacity 1
                     &::before
-                        top 0
-                        height 32px
+                        top 4px
+                        height 24px
                         transition .2s all 0s ease-in-out
                     a
                         margin-left 8px
@@ -107,12 +107,12 @@
 
 <template lang="html">
     <div class="menu-box">
-        <p class="menu-title">分类条目{{activeRoute}}{{focusRoute}}</p>
+        <p class="menu-title">分类条目</p>
         <div class="menu-split-line"></div>
         <ul>
             <router-link :to="item.router" tag="li" v-for="item in menuList"
-                         v-bind:class="{ disabled: item.disabled, active: activeRoute == item.name, ignore: !item.disabled && focusRoute != item.name }"
-                         v-on:mouseover.native="ignoreAndHover(item)">
+                         v-bind:class="{ disabled: item.disabled, active: activeRoute == item.name, ignore: !item.disabled && focusRoute && focusRoute != item.name }"
+                         v-on:mouseover.native="ignoreAndHover(item)" v-on:mouseleave.native="resetHover()">
                 <a>{{item.title}}</a>
             </router-link>
         </ul>
@@ -133,6 +133,9 @@
         methods: {
             ignoreAndHover: function( item ){
                 this.focusRoute = item.name
+            },
+            resetHover: function(){
+                this.focusRoute = ''
             }
         },
         components: {

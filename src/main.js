@@ -127,5 +127,5 @@ router.beforeEach((to, from, next) => {
     }
     next()
 });
-router.push('learnPart');
+
 

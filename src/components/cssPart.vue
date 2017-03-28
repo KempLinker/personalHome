@@ -3,6 +3,7 @@
 
     .article-container
         padding 0
+        margin-bottom 32px
         border none
 
     .content-list-title
@@ -71,7 +72,7 @@
             left 0
             bottom 0
             width 100%
-            height 32px
+            height 36px
             border-top 1px solid rgba(0,0,0,.05)
 
             &::before
@@ -93,7 +94,7 @@
                 position absolute
                 top -1px
                 right 0
-                width 0px
+                width 0
                 height 1px
                 background $bg-col-green
 
@@ -104,7 +105,7 @@
             .time
                 display inline-block
                 width 100px
-                line-height 32px
+                line-height 36px
                 margin-left 52px
                 font-size 12px
                 color $font-col-sub
@@ -113,7 +114,7 @@
                 display inline-block
                 margin-right 24px
                 font-size 12px
-                line-height 32px
+                line-height 36px
                 vertical-align bottom
 
                 span
@@ -165,7 +166,7 @@
         </p>
         <div class="content-box" v-for="article in articleList">
             <span class="content-tip">{{article.category}}</span>
-            <div class="content-caption" v-on:click="goDetail">{{article.name}}</div>
+            <div class="content-caption" v-on:click="goDetail(article.id)">{{article.name}}</div>
             <div class="content-abstract">{{article.abstract}}</div>
             <div class="content-sub-info">
                 <span class="time">
@@ -203,8 +204,8 @@
 
         },
         methods: {
-            goDetail: function(){
-                this.$router.push({ name: 'articlePart', params: { articleId: 123 }})
+            goDetail: function(articleId){
+                this.$router.push({ name: 'articlePart', params: { articleId: articleId }})
             }
         },
         components: {

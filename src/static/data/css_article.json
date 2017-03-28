@@ -1,0 +1,39 @@
+{
+  "article_list": [
+    {
+      "id": "1490707574838",
+      "name": "世末歌者",
+      "category": "css",
+      "create_time": "1469281964000",
+      "feature":{
+        "is_translated": true,
+        "is_reprinted": true,
+        "is_original": true,
+        "is_href": true,
+        "is_question": true
+      },
+      "detail": [
+        {
+          "tag": "p",
+          "text": "蝉时雨 化成淡墨渲染暮色"
+        },
+        {
+          "tag": "p",
+          "text": "渗透着 勾勒出足迹与车辙"
+        },
+        {
+          "tag": "p",
+          "text": "欢笑声 与漂浮的水汽饱和"
+        },
+        {
+          "tag": "p",
+          "text": "隔着窗 同城市一并模糊了"
+        },
+        {
+          "tag": "p",
+          "text": "拨弄着 旧吉他 哼着四拍子的歌"
+        }
+      ]
+    }
+  ]
+}
