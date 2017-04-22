@@ -33,15 +33,15 @@ const router = new VueRouter({
                     component: cssPart
                 },
                 {
-                    path: 'article/:articleId',
-                    name: 'articlePart',
-                    component: articlePart
-                },
-                {
                     path: '',
                     redirect: { name: 'cssPart' }
                 }
             ]
+        },
+        {
+            path: '/article/:articleId',
+            name: 'articlePart',
+            component: articlePart
         },
         {
             path: '/enjoy',
@@ -91,16 +91,23 @@ const navStore = {
 };
 const learnStore = {
     state: {
+        isArticle: false,
         activeClassify: 'default'
     },
     mutations: {
         'learn/setActiveClassify' (state, value) {
             state.activeRoute = value
+        },
+        'learn/isArticle' (state, value) {
+            state.isArticleAsync = value
         }
     },
     actions: {
         'learn/setActiveClassifyAsync' (state, value) {
             state.commit('learn/setActiveClassify',value)
+        },
+        'learn/isArticleAsync' (state, value) {
+            state.commit('learn/isArticle',value)
         }
     },
     getters: {

@@ -1,7 +1,7 @@
 <style lang="stylus" rel="stylesheet/stylus">
     @import './../common/stylus/variable.styl';
 
-    .article-container
+    .content-list-container
         padding 0
         margin-bottom 32px
         border none
@@ -160,7 +160,7 @@
 </style>
 
 <template lang="html">
-    <div class="article-container">
+    <div class="content-list-container">
         <p class="content-list-title">
             列表 - CSS
         </p>

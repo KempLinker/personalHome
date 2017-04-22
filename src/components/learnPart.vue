@@ -3,7 +3,7 @@
 
 </style>
 <template lang="html">
-    <div class="main-container a-container">
+    <div class="main-container">
         <div class="right-side-bar">
             <myb-menu :menu-list="menuList" :active-route="activeClassify"></myb-menu>
         </div>
@@ -48,7 +48,7 @@
         computed: {
             'activeClassify': function(){
                 return this.$store.state.learn.activeClassify;
-            }
+            },
         },
         methods: {
 

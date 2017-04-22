@@ -29,13 +29,6 @@
         margin 0 auto
         padding 36px 0 0 0
 
-    .article-container
-        position relative
-        top 0
-        max-width 660px
-        padding 8px 16px
-        box-sizing border-box
-
     .right-side-bar
         position absolute
         top 0

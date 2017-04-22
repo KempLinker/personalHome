@@ -20,7 +20,7 @@
             li
                 position relative
                 width 100%
-                margin 8px 0
+                margin 16px 0
                 padding-left 16px
                 line-height 32px
                 cursor pointer
@@ -73,7 +73,7 @@
                         height 24px
                         transition .2s all 0s ease-in-out
                     a
-                        margin-left 8px
+                        margin-left 16px
                         color $font-col-green
                         transition .2s all 0s ease-in-out
                         &::after
