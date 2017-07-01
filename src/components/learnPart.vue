@@ -34,8 +34,8 @@
                     },
                     {
                         router: '#',
-                        name: '待添加',
-                        title: '待添加',
+                        name: 'later ...',
+                        title: 'Later ...',
                         disabled: true
                     }
                 ]

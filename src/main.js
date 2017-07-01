@@ -9,6 +9,7 @@ import articlePart from './components/articlePart.vue';
 import enjoyPart from './components/enjoyPart.vue';
 import jsPart from './components/jsPart.vue';
 import cssPart from './components/cssPart.vue';
+import designPart from './components/designPart.vue';
 
 Vue.config.debug = true;
 Vue.use(VueRouter);
@@ -33,13 +34,18 @@ const router = new VueRouter({
                     component: cssPart
                 },
                 {
+                    path: 'design',
+                    name: 'designPart',
+                    component: designPart
+                },
+                {
                     path: '',
-                    redirect: { name: 'cssPart' }
+                    redirect: { name: 'designPart' }
                 }
             ]
         },
         {
-            path: '/article/:articleId',
+            path: '/article/:articleType/:articleId',
             name: 'articlePart',
             component: articlePart
         },
@@ -96,7 +102,7 @@ const learnStore = {
     },
     mutations: {
         'learn/setActiveClassify' (state, value) {
-            state.activeRoute = value
+            state.activeClassify = value
         },
         'learn/isArticle' (state, value) {
             state.isArticleAsync = value
@@ -132,7 +138,7 @@ router.beforeEach((to, from, next) => {
     if( to.fullPath.indexOf('/learn/') >= 0 ){
         store.state.learn.activeClassify = to.name
     }
-    next()
+    next();
 });
 
 

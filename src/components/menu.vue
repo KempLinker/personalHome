@@ -127,6 +127,9 @@
                 focusRoute: ''
             }
         },
+        created () {
+            this.$store.dispatch('learn/setActiveClassifyAsync',this.$route.name)
+        },
         computed: {
 
         },

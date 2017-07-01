@@ -4,6 +4,7 @@
         data () {
             return {
                 articleId: '',
+                articleType: '',
                 articleData: {},
                 articleList: [],
                 categoryList: [
@@ -27,11 +28,16 @@
         },
         created (){
             var articleId = this.articleId = this.$route.params.articleId;
-            this._axios.get('/src/static/data/css_article.json').then((res) => {
+            var articleType = this.articleType = this.$route.params.articleType;
+            var url = '/src/static/data/' + articleType + '_article.json';
+            this._axios.get(url).then((res) => {
                 this.articleList = res.data.article_list;
                 for( var i = 0, len = this.articleList.length; i < len; i ++ ){
                     if( this.articleList[i].id == articleId ){
-                        this.articleData = this.articleList[i];
+                        var articleData = this.articleData = this.articleList[i];
+                        articleData.create_time = new Date( Number(articleData.create_time) ).toLocaleDateString();
+                        articleData.update_time = new Date( Number(articleData.update_time) ).toLocaleDateString();
+                        break;
                     }
                 }
 
@@ -40,7 +46,12 @@
                 }
             });
 
-        }
+        },
+        methods: {
+            goArticleCategory: function(category){
+                this.$router.push({ name: category.name })
+            }
+        },
     }
 </script>
 
@@ -65,21 +76,22 @@
                 <div class="category-list">
                     <p>文章分类</p>
                     <ul>
-                        <li v-for="val in categoryList">{{val.title}}</li>
+                        <li v-for="val in categoryList" v-on:click="goArticleCategory(val)">{{val.title}}</li>
                     </ul>
                 </div>
             </div>
             <div class="article-title">世末歌者</div>
             <div class="article-box">
-                <div class="article-paragraph" v-for="val in articleData.detail">{{val.text}}</div>
-                <div class="article-paragraph" v-for="val in articleData.detail">{{val.text}}</div>
-                <div class="article-paragraph" v-for="val in articleData.detail">{{val.text}}</div>
-                <div class="article-paragraph" v-for="val in articleData.detail">{{val.text}}</div>
-                <div class="article-paragraph" v-for="val in articleData.detail">{{val.text}}</div>
-                <div class="article-paragraph" v-for="val in articleData.detail">{{val.text}}</div>
-                <div class="article-paragraph" v-for="val in articleData.detail">{{val.text}}</div>
-                <div class="article-paragraph" v-for="val in articleData.detail">{{val.text}}</div>
-                <div class="article-paragraph" v-for="val in articleData.detail">{{val.text}}</div>
+                <div class="article-paragraph" v-for="val in articleData.detail">
+                    <div class="content" v-if="val.tag == 'p'">{{val.text}}</div>
+                    <div class="code" v-if="val.tag == 'code'">
+                        <pre>
+                            <code>
+                                {{val.text}}
+                            </code>
+                        </pre>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -212,9 +224,10 @@
         .article-paragraph
             width 100%
             padding-bottom 8px
-            font-size 14px
-            line-height normal
-            text-indent 32px
-            color $font-col-article
+            .content
+                font-size 14px
+                line-height 24px
+                text-indent 32px
+                color $font-col-article
 
 </style>

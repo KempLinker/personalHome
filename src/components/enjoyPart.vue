@@ -13,7 +13,7 @@
 </script>
 
 <template>
-    <div class="route-b">{{datum}}</div>
+
 </template>
 
 <style>
