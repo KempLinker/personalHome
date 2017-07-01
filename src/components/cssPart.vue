@@ -36,7 +36,7 @@
 
         },
         created (){
-            this._axios.get('/src/static/data/data.json').then((res) => {
+            this._axios.get('src/static/data/data.json').then((res) => {
                 var articleList = this.articleList;
                 var allArticleList = res.data.article_list;
                 allArticleList.forEach(function(article){

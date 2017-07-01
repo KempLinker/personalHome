@@ -23,7 +23,6 @@
                 margin 16px 0
                 padding-left 16px
                 line-height 32px
-                cursor pointer
                 opacity 1
                 color $font-col-dark
                 a
@@ -31,6 +30,7 @@
                     display inline-block
                     margin-left 0
                     line-height 32px
+                    cursor pointer
                     transition .2s all 0s ease-in-out
                     &::after
                         content ''
