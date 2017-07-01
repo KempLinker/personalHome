@@ -646,7 +646,7 @@
     }
     $(document).ready(function(){
         var $aniTextBox = $('.J-ani-text');
-        $aniTextBox.on('mouseover', function(){
+        $aniTextBox.on('mouseover.aniTextBox', function(){
             $(this).removeClass('out-active');
             $(this).addClass('active');
             $aniTextBox.each(function( index, dom ){
@@ -659,7 +659,7 @@
         function removeOutActive( obj ){
             obj.removeClass('out-active');
         }
-        $aniTextBox.on('mouseleave', function( e ){
+        $aniTextBox.on('mouseleave.aniTextBox', function( e ){
             $aniTextBox.removeClass('disabled');
             $aniTextBox.removeClass('active');
             var obj = $(this);
@@ -671,23 +671,28 @@
 
         var $goBlock = $('.J-go');
         var $mustacheBlock = $('.J-mustache');
-        $goBlock.on('mouseover', function( e ){
+        $goBlock.on('mouseover.goBlock', function( e ){
             $('.J-go-arrow').addClass('move');
             $aboutBlock.addClass('yellow');
             $mustacheBlock.addClass('active');
         });
-        $goBlock.on('mouseleave', function( e ){
+        $goBlock.on('mouseleave.goBlock', function( e ){
             $('.J-go-arrow').removeClass('move');
             $aboutBlock.removeClass('yellow');
             $mustacheBlock.removeClass('active');
         });
         var $aboutBlock = $('.J-about');
-        $aboutBlock.on('mouseover', function( e ){
+        $aboutBlock.on('mouseover.aboutBlock', function( e ){
             $aboutBlock.addClass('yellow');
         });
-        $aboutBlock.on('mouseleave', function( e ){
+        $aboutBlock.on('mouseleave.aboutBlock', function( e ){
             $aboutBlock.removeClass('yellow');
         });
+
+        $goBlock.on('click.goBlock', function( e ){
+            window.location.href = "../index.html"
+        });
+
     });
 </script>
 </html>
