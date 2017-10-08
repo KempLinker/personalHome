@@ -8,11 +8,7 @@
       "update_time": "1469281964000",
       "tags": ["css","文章"],
       "feature":{
-        "is_translated": true,
-        "is_reprinted": true,
-        "is_original": true,
-        "is_href": true,
-        "is_question": true
+        "is_original": true
       }
     }
   ]
