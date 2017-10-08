@@ -52,6 +52,11 @@
                 this.$router.push({ name: category.name })
             }
         },
+        computed: {
+            articleName: function () {
+                return require(`./articles/${this.articleId}.vue`)
+            }
+        },
     }
 </script>
 
@@ -82,16 +87,7 @@
             </div>
             <div class="article-title">世末歌者</div>
             <div class="article-box">
-                <div class="article-paragraph" v-for="val in articleData.detail">
-                    <div class="content" v-if="val.tag == 'p'">{{val.text}}</div>
-                    <div class="code" v-if="val.tag == 'code'">
-                        <pre>
-                            <code>
-                                {{val.text}}
-                            </code>
-                        </pre>
-                    </div>
-                </div>
+                <component :is="articleName" class="article-paragraph"></component>
             </div>
         </div>
     </div>
@@ -224,10 +220,12 @@
         .article-paragraph
             width 100%
             padding-bottom 8px
-            .content
+            p
                 font-size 14px
                 line-height 24px
                 text-indent 32px
                 color $font-col-article
+            pre
+                padding-left 32px
 
 </style>
